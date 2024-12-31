@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy-Sign Up</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+    	.signup-container, .login-container, .welcome-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="up" id="trend"> BOOK HEAVEN</div>
+    <div class="header">
+        
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="login.html">Login</a></div>
+    </div>
+
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter Username">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter Email">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter Password">
+            
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password">
+            
+            <button type="submit" id="signup-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get user input
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+
+            // Basic validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // Save user data to localStorage (simulate database)
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({ username, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Sign up successful! You can now log in.");
+            window.location.href = "login.html"; // Redirect to login page
+        });
+    </script>
+</body>
+</html>

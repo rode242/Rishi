@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy-Payment Successful</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="up" id="trend"> BOOK HEAVEN</div>
+    <div class="header">
+        
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="aboutus.html">About Us</a></div>
+        <div class="rightc"><a href="category.html">Categories</a></div>
+        <div class="rightc"><a href="cart.html">Cart</a></div>
+        <div class="rightc">
+            <input type="text" placeholder="Enter Product">
+            <button class="si">Search</button>
+        </div>
+        <div class="rightc"><button class="sii"><a href="signup.html">SignUp</a></button></div>
+        <div class="rightc"><button class="si"><a href="login.html">Login</a></button></div>
+    </div>
+
+    <div class="payment-successful-container">
+        <h2>Payment Successful!</h2>
+        <p>Thank you for your purchase. Your order is being processed, and we will notify you when it's ready for shipping.</p>
+        <p>Your total amount was <strong>$<span id="payment-total">0.00</span></strong>.</p>
+        <button onclick="window.location.href='index.html'">Return to Home</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to load the total amount from localStorage
+        function loadTotalAmount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalAmount = 0;
+            cart.forEach(item => {
+                totalAmount += item.price * item.quantity;
+            });
+
+            // Display the total amount in the payment success page
+            document.getElementById('payment-total').textContent = totalAmount.toFixed(2);
+        }
+
+        // Load the total amount when the page loads
+        loadTotalAmount();
+    </script>
+
+    <style>
+        .payment-successful-container {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        .payment-successful-container h2 {
+            color: #4CAF50;
+        }
+
+        .payment-successful-container p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .payment-successful-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .payment-successful-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</body>
+</html>

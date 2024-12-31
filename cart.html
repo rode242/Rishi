@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trendy-Shopping Cart</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="up" id="trend"> BOOK HEAVEN</div>
+    <div class="header">
+        
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="aboutus.html">About Us</a></div>
+        <div class="rightc"><a href="category.html">stores</a></div>
+        <div class="rightc"><a href="cart.html">Cart</a></div>
+        <div class="rightc"><button class="si"><a href="signup.html">SignUp</a></button></div>
+        <div class="rightc"><button class="si"><a href="login.html">Login</a></button></div>
+    </div>
+
+    <div class="main">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+
+        <p>Total: $<span id="total-price">0</span></p>
+        <a class="checkout-btn" onclick="proceedToCheckout()" href="payment.html">Proceed to Checkout</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cart-items');
+            let total = 0;
+
+            cartContainer.innerHTML = '';
+            cart.forEach(item => {
+                let itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" width="100">
+                    <span>${item.name}</span>
+                    <span>$${item.price}</span>
+                    <button onclick="removeFromCart('${item.name}')">Remove</button>
+                `;
+                cartContainer.appendChild(itemElement);
+                total += item.price;
+            });
+
+            document.getElementById('total-price').textContent = total;
+        }
+
+        function removeFromCart(itemName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.name !== itemName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function proceedToCheckout() {
+            alert("Proceeding to payment. Thank you for shopping!");
+            // You can integrate a payment gateway here (e.g., PayPal, Stripe)
+        }
+
+        // Display cart when the page loads
+        displayCart();
+    </script>
+</body>
+</html>

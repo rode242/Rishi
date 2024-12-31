@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy-Payment</title>
+    <link rel="stylesheet" href="home.css">
+    
+</head>
+<body>
+    <div class="up" id="trend"> BOOK HEAVEN</div>
+    <div class="header">
+        
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="aboutus.html">About Us</a></div>
+        <div class="rightc"><a href="category.html">Categories</a></div>
+        <div class="rightc"><a href="cart.html">Cart</a></div>
+        <div class="rightc">
+            <input type="text" placeholder="Enter Product">
+            <button class="si">Search</button>
+        </div>
+        <div class="rightc"><button class="sii"><a href="signup.html">SignUp</a></button></div>
+        <div class="rightc"><button class="si"><a href="login.html">Login</a></button></div>
+    </div>
+
+    <div class="payment-container">
+        <h2>Payment Information</h2>
+        <form class="payment-form" action="payment_success.html" method="POST">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter Name">
+            
+            <label for="card-number">Credit Card Number</label>
+            <input type="text" id="card-number" name="card-number" required placeholder="1234 5678 1234 5678">
+            
+            <label for="expiry-date">Expiration Date</label>
+            <input type="month" id="expiry-date" name="expiry-date" required>
+            
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" required placeholder="123">
+
+            <!-- Payment Submit Button with JavaScript validation -->
+            <button type="button" class="pay-now-btn" style="background-color: green; height: 37px; text-align: center; font-size: 20px; box-shadow: 0px 0px 10px 3px green; border: none; color: white; cursor: pointer;" onclick="validateAndRedirect(event)">Pay Now</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript function to validate the form
+        function validateAndRedirect(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+
+            // Get form fields
+            const name = document.getElementById('name').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Check if all fields are filled out
+            if (name && cardNumber && expiryDate && cvv) {
+                // Redirect to payment success page if all fields are filled
+                window.location.href = "payment_success.html";
+            } else {
+                // If any field is missing, show an alert
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+</body>
+</html>

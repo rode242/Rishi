@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy-Home</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        /* Add some basic styling */
+        .store-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .product-card {
+            width: 200px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-card .text {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-card .price {
+            margin: 10px 0;
+            color: green;
+        }
+        .add-to-cart-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #218838;
+        }
+        .cart-icon {
+            font-size: 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="up" id="trend">BOOK HEAVEN</div>
+    <div class="header">
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="aboutus.html">About Us</a></div>
+        <div class="rightc"><a href="cart.html">Cart</a></div>
+        <div class="rightc">
+            <input type="text" placeholder="Enter Product">
+            <button class="si">Search</button>
+        </div>
+        <div class="rightc"><button class="sii"><a href="signup.html">SignUp</a></button></div>
+        <div class="rightc"><button class="si"><a href="login.html">Login</a></button></div>
+    </div>
+
+    <!-- Store Section -->
+    <div class="store-section">
+        <div class="product-card">
+            <img src="book1.jpg" alt="Stephen King- learning book">
+            <div class="text">Stephen King- learning book</div>
+            <p class="price">$150</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Stephen King- learning book', 150, 'book1.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book2.jpg" alt="A Different Light">
+            <div class="text">A Different Light</div>
+            <p class="price">$80</p>
+            <button class="add-to-cart-btn" onclick="addToCart('A Different Light', 80, 'book2.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book3.jpg" alt="DIFFERENT-Escaping the Competitive Herd">
+            <div class="text">DIFFERENT-Escaping the Competitive Herd</div>
+            <p class="price">$120</p>
+            <button class="add-to-cart-btn" onclick="addToCart('DIFFERENT-Escaping the Competitive Herd', 120, 'book3.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book4.jpg" alt="Good Different">
+            <div class="text">Good Different</div>
+            <p class="price">$200</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Good Different', 200, 'book4.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book5.jpg" alt="Equal AT Different">
+            <div class="text">Equal AT Different</div>
+            <p class="price">$800</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Equal AT Different', 800, 'book5.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book6.jpg" alt="All This Could Be Different">
+            <div class="text">All This Could Be Different</div>
+            <p class="price">$100</p>
+            <button class="add-to-cart-btn" onclick="addToCart('All This Could Be Different', 100, 'book6.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book7.jpg" alt="The Ultimate Guide Galaxy">
+            <div class="text">The Ultimate Guide Galaxy</div>
+            <p class="price">$50</p>
+            <button class="add-to-cart-btn" onclick="addToCart('The Ultimate Guide Galaxy', 50, 'book7.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="book8.jpg" alt="This Summek Will Be Different">
+            <div class="text">This Summek Will Be Different</div>
+            <p class="price">$600</p>
+            <button class="add-to-cart-btn" onclick="addToCart('This Summek Will Be Different', 600, 'book8.jpg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Cart Section Icon -->
+    <div class="cart-icon">
+        <a href="cart.html">🛒 View Cart</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(name, price, image) {
+            // Check if the item already exists in the cart
+            let existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                // If item exists, increase the quantity
+                existingItem.quantity++;
+            } else {
+                // If item does not exist, add it to the cart with quantity 1
+                cart.push({ name, price, image, quantity: 1 });
+            }
+
+            // Save the updated cart in localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${name} has been added to your cart!`);
+        }
+    </script>
+</body>
+</html>

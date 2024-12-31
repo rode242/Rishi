@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy-Login</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+    	.signup-container, .login-container, .welcome-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="up" id="trend"> BOOK HEAVEN</div>
+    <div class="header">
+        
+        <div class="rightc"><a href="index.html">Home</a></div>
+        <div class="rightc"><a href="signup.html">Sign Up</a></div>
+    </div>
+
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form id="login-form">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="login-email" required placeholder="Enter Email">
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" required placeholder="Enter Password">
+
+            <button type="submit" id="login-btn">Login</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get user input
+            let email = document.getElementById("login-email").value;
+            let password = document.getElementById("login-password").value;
+
+            // Retrieve users from localStorage
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if email and password match any user
+            let user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                alert("Login successful! Welcome back.");
+                window.location.href = "index.html"; // Redirect to homepage
+            } else {
+                alert("Invalid email or password.");
+            }
+        });
+    </script>
+</body>
+</html>
